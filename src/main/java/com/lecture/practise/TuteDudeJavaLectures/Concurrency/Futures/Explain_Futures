@@ -1,0 +1,29 @@
+What’s a Future?
+
+Think of ordering a pizza 🍕:
+
+- You place the order (start a task).
+- You get a token/receipt that represents your order (this is the Future).
+- You can do other stuff while it’s baking.
+- Later, you use the token to get the pizza when it’s ready.
+
+In Java, a Future<T> is that token for a computation that’s running on another thread and will eventually
+produce a result of type T.
+
+Why do we need it?
+
+- To run slow work (like network calls, file I/O, heavy CPU tasks) without freezing your main thread.
+- To check if work is done, wait for it, or cancel it.
+
+
+The basic players
+
+- ExecutorService: a thread pool (group of worker threads).
+- Callable<T>: a task that returns a value T (like a function).
+- Future<T>: the handle you get back when you submit a Callable.
+
+
+The modern way: CompletableFuture (nicer API)
+
+Future is basic and mostly blocking (you call get() and wait).
+CompletableFuture lets you chain tasks and react when they finish—less blocking, cleaner async code.
